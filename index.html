@@ -55,13 +55,96 @@
         .glyco-keyword { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .glyco-keyword.visible { opacity: 1; transform: translateY(0); }
         /* 제품 상세 모달 */
-        .product-modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
-        .product-modal.active { display: flex; align-items: center; justify-content: center; }
-        .modal-content { background-color: white; margin: auto; padding: 0; border-radius: 1rem; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .modal-header { padding: 1.5rem; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
-        .modal-body { padding: 1.5rem; }
-        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280; }
-        .modal-close:hover { color: #111827; }
+        .product-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.5); 
+            animation: fadeIn 0.3s ease;
+        }
+        .product-modal.active { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .modal-content { 
+            background-color: white; 
+            margin: auto; 
+            padding: 0; 
+            border-radius: 1rem; 
+            max-width: 600px; 
+            width: 95%; 
+            max-height: 90vh; 
+            overflow-y: auto; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+        @media (max-width: 640px) {
+            .modal-content {
+                width: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+                margin: 0;
+            }
+        }
+        .modal-header { 
+            padding: 1rem 1.5rem; 
+            border-bottom: 1px solid #e5e7eb; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+        @media (max-width: 640px) {
+            .modal-header {
+                padding: 1rem;
+            }
+            .modal-header h3 {
+                font-size: 1.25rem;
+            }
+        }
+        .modal-body { 
+            padding: 1.5rem; 
+        }
+        @media (max-width: 640px) {
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+        .modal-close { 
+            background: none; 
+            border: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            color: #6b7280;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover { 
+            color: #111827; 
+            background-color: #f3f4f6;
+            border-radius: 50%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -205,11 +288,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">223,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">144 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="앰브로토스 라이프"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>앰브로토스 파우더 (글리코영양소)</li><li>비타민 C, E (항산화 비타민)</li><li>아연, 셀레늄 (필수 미네랄)</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>글리코영양소의 면역학적 역할:</strong></p><p class='text-sm text-gray-600 mb-2'>세포 표면의 당사슬(글리칸)은 세포 간 신호 전달에 필수적입니다. 연구에 따르면 글리코영양소가 부족하면 면역세포(T세포, B세포)의 활성화가 저하되어 감염에 취약해질 수 있습니다.</p><p class='text-sm text-gray-600'><strong>비타민 C의 면역 강화:</strong> 백혈구의 식균작용을 촉진하고 인터페론 생성을 증가시켜 바이러스 감염에 대한 방어력을 높입니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>면역력 증진: 자연살해세포(NK세포) 활성화</li><li>피부 건강 개선: 콜라겐 합성 촉진</li><li>장 건강 지원: 장벽 기능 강화</li><li>항산화 작용: 자유라디칼 제거</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>하루 1회, 물이나 주스에 섞어 섭취하세요. 공복 또는 식후 30분에 복용하는 것을 권장합니다.</p><h4 class='font-bold text-lg mb-3 text-gray-800'>권장 섭취량</h4><p class='text-sm text-gray-700'>1일 1포 (약 5g)</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 라이프" data-price="223000" data-pv="144">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 라이프" data-price="223000" data-pv="144">담기</button>
                         </div>
                     </div>
                 </div>
@@ -229,11 +312,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">269,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">174 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="OSP"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>구성 제품</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>앰브로토스 AO (항산화)</li><li>플러스 (홍삼)</li><li>카탈리스트 (비타민/미네랄)</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>시너지 효과 (Synergy Effect):</strong></p><p class='text-sm text-gray-600 mb-2'>각 성분이 단독으로 섭취될 때보다 함께 섭취할 때 상호작용으로 효과가 증폭됩니다. 예를 들어, 비타민 C는 비타민 E의 항산화 효과를 재생시키고, 아연은 면역세포의 기능에 필수적입니다.</p><p class='text-sm text-gray-600'><strong>홍삼의 적응원(Adaptogen) 작용:</strong> 스트레스 호르몬인 코르티솔 수치를 조절하여 면역계 균형을 유지합니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>종합 영양 보충: 필수 영양소 일일 권장량 충족</li><li>면역력 강화: 다중 면역 경로 활성화</li><li>항산화 지원: 산화 스트레스 감소</li><li>기초 건강 관리: 전반적인 건강 상태 개선</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>각 제품의 권장 복용법에 따라 섭취하세요. 아침 식후 복용을 권장합니다.</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="OSP" data-price="269000" data-pv="174">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="OSP" data-price="269000" data-pv="174">담기</button>
                         </div>
                     </div>
                 </div>
@@ -253,11 +336,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">330,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">213 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="만나폴"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>100% 순수 알로에 베라 겔 농축물</li><li>아세만난 (Acemannan) - 면역 활성 다당류</li><li>폴리사카라이드</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>아세만난의 면역학적 메커니즘:</strong></p><p class='text-sm text-gray-600 mb-2'>알로에 베라의 주요 활성 성분인 아세만난은 대식세포(Macrophage)를 활성화시켜 인터루킨-1(IL-1), 종양괴사인자(TNF-α) 등의 사이토카인 생성을 촉진합니다. 이는 면역계의 선천면역과 후천면역을 모두 강화합니다.</p><p class='text-sm text-gray-600'><strong>장 건강과 면역의 연관성:</strong> 장 점막의 면역세포(장관연관림프조직, GALT)가 전신 면역의 70%를 담당하므로, 알로에 베라의 장 점막 보호 효과는 간접적으로 전신 면역력을 향상시킵니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>면역력 강화: 대식세포 및 NK세포 활성화</li><li>항염증 작용: 프로스타글란딘 억제</li><li>장 건강: 점막 보호 및 재생</li><li>항산화: 자유라디칼 제거</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>공복에 하루 1-2회, 물과 함께 섭취하세요.</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="만나폴" data-price="330000" data-pv="213">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="만나폴" data-price="330000" data-pv="213">담기</button>
                         </div>
                     </div>
                 </div>
@@ -277,11 +360,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">71,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">46 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="카탈리스트"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>22가지 필수 비타민 및 미네랄</li><li>비타민 B군 (B1, B2, B6, B12, 엽산 등)</li><li>비타민 C, D, E</li><li>아연, 셀레늄, 마그네슘, 철분 등</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>비타민의 생리학적 역할:</strong></p><p class='text-sm text-gray-600 mb-2'>비타민은 효소의 보조인자(Coenzyme)로 작용하여 신진대사에 필수적입니다. 예를 들어, 비타민 B1은 탄수화물 대사에, 비타민 B12는 DNA 합성과 적혈구 생성에 필요합니다.</p><p class='text-sm text-gray-600 mb-2'><strong>미네랄의 중요성:</strong> 아연은 300개 이상의 효소 반응에 관여하며, 면역세포의 성숙과 기능에 필수적입니다. 셀레늄은 글루타티온 퍼옥시다제의 구성 성분으로 항산화 작용을 합니다.</p><p class='text-sm text-gray-600'><strong>영양소 결핍의 임상적 의미:</strong> 만성적인 미량 영양소 결핍은 면역 기능 저하, 피로, 인지 기능 저하 등으로 이어질 수 있어 충분한 섭취가 중요합니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>영양소 보충: 일일 권장량 100% 이상 제공</li><li>에너지 대사: 탄수화물, 지방, 단백질 대사 지원</li><li>면역 기능: 면역세포 생성 및 활성화</li><li>항산화: 자유라디칼 제거</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>식후 하루 1-2정 복용하세요. 180정 (약 3개월분)</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="카탈리스트" data-price="71000" data-pv="46">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="카탈리스트" data-price="71000" data-pv="46">담기</button>
                         </div>
                     </div>
                 </div>
@@ -301,11 +384,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">66,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">43 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="플러스"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>홍삼 추출물</li><li>진세노사이드 (Ginsenoside)</li><li>사포닌</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>진세노사이드의 적응원 작용:</strong></p><p class='text-sm text-gray-600 mb-2'>홍삼의 주요 활성 성분인 진세노사이드는 적응원(Adaptogen)으로 작용합니다. 이는 스트레스에 대한 신체의 비특이적 저항력을 높여, 스트레스 호르몬인 코르티솔 수치를 조절하고 부신 피질 기능을 정상화합니다.</p><p class='text-sm text-gray-600 mb-2'><strong>면역 조절 효과:</strong> 진세노사이드는 면역세포의 기능을 양방향으로 조절합니다. 면역력이 낮을 때는 증가시키고, 과도할 때는 억제하여 균형을 유지합니다. 특히 NK세포와 대식세포의 활성을 높입니다.</p><p class='text-sm text-gray-600'><strong>피로 개선 메커니즘:</strong> 미토콘드리아의 ATP 생성을 촉진하고, 혈류를 개선하여 산소 공급을 증가시킵니다. 또한 뇌에서 도파민과 세로토닌 분비를 조절하여 정신적 피로를 개선합니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>면역력 강화: NK세포 및 대식세포 활성화</li><li>피로 개선: 에너지 대사 촉진</li><li>스트레스 완화: 코르티솔 조절</li><li>인지 기능: 기억력 및 집중력 개선</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>아침 식후 하루 1-2회 복용하세요. 60캡슐</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="플러스" data-price="66000" data-pv="43">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="플러스" data-price="66000" data-pv="43">담기</button>
                         </div>
                     </div>
                 </div>
@@ -325,11 +408,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">81,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">52 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="앰브로토스 AO"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>앰브로토스 추출물</li><li>비타민 C, E</li><li>베타카로틴</li><li>셀레늄</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>항산화 시스템의 작용 메커니즘:</strong></p><p class='text-sm text-gray-600 mb-2'>자유라디칼은 세포막, DNA, 단백질을 손상시켜 노화와 질병을 유발합니다. 항산화제는 전자를 제공하여 자유라디칼을 중화시킵니다. 비타민 E는 지용성 항산화제로 세포막을 보호하고, 비타민 C는 수용성 항산화제로 세포질과 혈장에서 작용합니다.</p><p class='text-sm text-gray-600 mb-2'><strong>시너지 효과:</strong> 비타민 C는 산화된 비타민 E를 재생시켜 항산화 효과를 연장합니다. 셀레늄은 글루타티온 퍼옥시다제의 구성 성분으로 작용하여 강력한 항산화 효소를 만듭니다.</p><p class='text-sm text-gray-600'><strong>세포 보호:</strong> 항산화제는 미토콘드리아의 산화 스트레스를 감소시켜 에너지 생성을 최적화하고, 세포 사멸(아포토시스)을 억제합니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>항산화: 자유라디칼 제거</li><li>세포 보호: 세포막 및 DNA 보호</li><li>노화 방지: 산화 스트레스 감소</li><li>면역 지원: 면역세포 보호</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>식후 하루 1-2회 복용하세요. 60캡슐</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 AO" data-price="81000" data-pv="52">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 AO" data-price="81000" data-pv="52">담기</button>
                         </div>
                     </div>
                 </div>
@@ -359,11 +442,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">66,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">43 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="트루퓨어"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>밀크 시슬 추출물 (실리마린)</li><li>아티초크 추출물</li><li>간 보호 성분</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>간의 해독 메커니즘:</strong></p><p class='text-sm text-gray-600 mb-2'>간은 1단계(산화) 및 2단계(결합) 해독 과정을 통해 독소를 제거합니다. 실리마린은 간세포막을 안정화시키고 글루타티온 생성을 증가시켜 해독 효소의 활성을 높입니다.</p><p class='text-sm text-gray-600 mb-2'><strong>실리마린의 간 보호 효과:</strong> 연구에 따르면 실리마린은 간세포 재생을 촉진하고, 간 섬유화를 억제하며, 간 효소 수치를 개선합니다. 특히 알코올성 및 비알코올성 지방간 질환에 유익한 효과가 보고되었습니다.</p><p class='text-sm text-gray-600'><strong>아티초크의 담즙 분비 촉진:</strong> 아티초크 추출물은 담즙 분비를 증가시켜 지방 소화를 돕고, 간의 부담을 줄입니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>간 건강 지원: 간세포 보호 및 재생</li><li>해독 기능 강화: 해독 효소 활성화</li><li>신진대사 촉진: 지방 대사 개선</li><li>항산화: 간 조직의 산화 스트레스 감소</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>식후 하루 1-2회 복용하세요. 간 건강이 우려되는 분께 권장합니다.</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="트루퓨어" data-price="66000" data-pv="43">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="트루퓨어" data-price="66000" data-pv="43">담기</button>
                         </div>
                     </div>
                 </div>
@@ -383,11 +466,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">49,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">32 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="지아이-프로밸런스"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>85억 CFU 보장 유산균</li><li>락토바실러스, 비피도박테리움 등</li><li>프리바이오틱스 (식이섬유)</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>장내 미생물군과 건강:</strong></p><p class='text-sm text-gray-600 mb-2'>인간의 장에는 약 100조 개의 미생물이 서식하며, 이들의 균형이 면역, 소화, 신진대사, 심지어 정신 건강까지 영향을 미칩니다. 유익균이 감소하면 유해균이 증가하여 염증 반응이 촉진됩니다.</p><p class='text-sm text-gray-600 mb-2'><strong>유산균의 작용 메커니즘:</strong> 유산균은 단쇄지방산(SCFA)을 생성하여 장 점막을 영양하고, 면역세포를 조절하며, 병원균의 장벽 부착을 경쟁적으로 억제합니다. 또한 장-뇌 축(Gut-Brain Axis)을 통해 신경전달물질 생성을 조절합니다.</p><p class='text-sm text-gray-600'><strong>면역과의 연관성:</strong> 장관연관림프조직(GALT)이 전신 면역의 70%를 담당하므로, 장 건강이 면역력에 직접적으로 영향을 미칩니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>장 건강: 유익균 증식 및 장내 환경 개선</li><li>면역력 강화: 면역세포 활성화</li><li>배변 활동: 장 운동 촉진</li><li>소화 기능: 영양소 흡수 개선</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>공복 또는 식후 30분에 하루 1-2회 복용하세요. 항생제 복용 시 2시간 간격을 두세요.</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="지아이-프로밸런스" data-price="49000" data-pv="32">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="지아이-프로밸런스" data-price="49000" data-pv="32">담기</button>
                         </div>
                     </div>
                 </div>
@@ -455,11 +538,11 @@
                             <span class="text-xl md:text-2xl font-bold text-gray-800">90,000원</span>
                             <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">58 PV</span>
                         </div>
-                        <div class="flex gap-2">
-                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition" 
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button class="view-detail-btn flex-1 py-2 rounded-lg border-2 border-gray-300 text-gray-700 text-xs sm:text-sm font-semibold hover:bg-gray-50 transition" 
                                 data-product="오소린"
                                 data-detail="<h4 class='font-bold text-lg mb-3 text-gray-800'>주요 성분</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>고품질 유청 단백질 (Whey Protein)</li><li>BCAA (분지쇄 아미노산)</li><li>루신, 이소루신, 발린</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>의학적 배경</h4><div class='bg-blue-50 p-4 rounded-lg mb-4'><p class='text-sm text-gray-700 mb-2'><strong>단백질의 근육 합성 메커니즘:</strong></p><p class='text-sm text-gray-600 mb-2'>근육 단백질 합성(MPS)은 mTOR 경로를 통해 조절됩니다. 루신은 mTOR를 직접 활성화시켜 근육 합성을 촉진합니다. 운동 후 30분-2시간 내 단백질 섭취가 근육 회복과 성장에 가장 효과적입니다.</p><p class='text-sm text-gray-600 mb-2'><strong>유청 단백질의 생체이용률:</strong> 유청 단백질은 완전 단백질로 모든 필수 아미노산을 포함하며, 생체이용률(BV)이 높아 빠르게 흡수됩니다. 이는 근육 회복과 성장에 유리합니다.</p><p class='text-sm text-gray-600'><strong>체지방 감소 효과:</strong> 단백질은 포만감을 높이고, 식이유도성 열생산(DIT)을 증가시켜 에너지 소비를 늘립니다. 또한 근육량 유지로 기초대사율을 높여 체지방 감소에 도움을 줍니다.</p></div><h4 class='font-bold text-lg mb-3 text-gray-800'>주요 효능</h4><ul class='list-disc list-inside mb-4 space-y-1 text-sm text-gray-700'><li>근육 합성: 근육 단백질 합성 촉진</li><li>체지방 감소: 포만감 증가 및 대사 촉진</li><li>근육 보호: 운동 중 근육 분해 억제</li><li>회복 촉진: 운동 후 근육 회복 가속</li></ul><h4 class='font-bold text-lg mb-3 text-gray-800'>복용법</h4><p class='text-sm mb-4 text-gray-700'>운동 후 30분-2시간 내 또는 아침 식사 대용으로 섭취하세요. 물이나 우유에 타서 드세요. 366g (약 20회분)</p>">상세보기</button>
-                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="오소린" data-price="90000" data-pv="58">담기</button>
+                            <button class="add-to-cart-btn flex-1 py-2 rounded-lg mannatech-gradient text-white text-xs sm:text-sm font-semibold mannatech-gradient-hover transition" data-name="오소린" data-price="90000" data-pv="58">담기</button>
                         </div>
                     </div>
                 </div>
@@ -613,7 +696,7 @@
     </footer>
 
     <!-- PV 계산기(장바구니) 플로팅 위젯 -->
-    <div id="cartWidget" class="fixed bottom-24 right-4 md:right-6 w-56 md:w-64 bg-white rounded-2xl shadow-xl border border-gray-200 p-4 z-50 hidden">
+    <div id="cartWidget" class="fixed bottom-24 right-2 md:right-6 left-2 md:left-auto w-auto md:w-56 lg:w-64 bg-white rounded-2xl shadow-xl border border-gray-200 p-4 z-50 hidden max-w-[calc(100%-1rem)] md:max-w-none">
         <div class="flex items-center justify-between mb-3">
             <h4 class="font-bold text-gray-800"><i class="fas fa-calculator text-green-500 mr-2"></i>PV 계산기</h4>
             <button id="cartClose" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
@@ -644,20 +727,20 @@
     </div>
 
     <!-- 플로팅 CTA (실시간 상담 연결) -->
-    <div class="floating-cta fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 py-3 px-4">
-        <div class="container mx-auto flex flex-wrap items-center justify-center gap-3 md:gap-6">
-            <a href="#" class="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 transition font-semibold text-sm" title="카카오톡 상담">
-                <i class="fas fa-comment"></i> 카카오톡 상담하기
+    <div class="floating-cta fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 py-2 md:py-3 px-2 md:px-4">
+        <div class="container mx-auto flex flex-wrap items-center justify-center gap-2 md:gap-3 lg:gap-6">
+            <a href="#" class="inline-flex items-center gap-1 md:gap-2 bg-yellow-400 text-gray-900 px-2 md:px-4 py-1.5 md:py-2 rounded-lg hover:bg-yellow-500 transition font-semibold text-xs md:text-sm" title="카카오톡 상담">
+                <i class="fas fa-comment text-sm md:text-base"></i> <span class="hidden sm:inline">카카오톡 상담하기</span><span class="sm:hidden">카톡</span>
             </a>
-            <a href="tel:1588-0000" class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold text-sm">
-                <i class="fas fa-phone"></i> 전화 상담
+            <a href="tel:1588-0000" class="inline-flex items-center gap-1 md:gap-2 bg-green-600 text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg hover:bg-green-700 transition font-semibold text-xs md:text-sm">
+                <i class="fas fa-phone text-sm md:text-base"></i> <span class="hidden sm:inline">전화 상담</span><span class="sm:hidden">전화</span>
             </a>
-            <a href="https://www.youtube.com/results?search_query=글로벌리더스+그룹" target="_blank" class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition font-semibold text-sm">
-                <i class="fab fa-youtube"></i> 공식 유튜브
+            <a href="https://www.youtube.com/results?search_query=글로벌리더스+그룹" target="_blank" class="inline-flex items-center gap-1 md:gap-2 bg-red-600 text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg hover:bg-red-700 transition font-semibold text-xs md:text-sm">
+                <i class="fab fa-youtube text-sm md:text-base"></i> <span class="hidden sm:inline">공식 유튜브</span><span class="sm:hidden">유튜브</span>
             </a>
         </div>
     </div>
-    <div class="h-14"></div>
+    <div class="h-12 md:h-14"></div>
 
     <!-- Initialize AOS -->
     <script>
@@ -735,6 +818,49 @@
             window.addEventListener('scroll', check);
             check();
         })();
+
+        // 제품 상세 모달
+        var modal = document.getElementById('productModal');
+        var modalProductName = document.getElementById('modalProductName');
+        var modalProductDetail = document.getElementById('modalProductDetail');
+        var modalClose = document.getElementById('modalClose');
+        
+        if (modal && modalProductName && modalProductDetail && modalClose) {
+            document.querySelectorAll('.view-detail-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var productName = this.getAttribute('data-product');
+                    var detail = this.getAttribute('data-detail');
+                    if (productName && detail) {
+                        modalProductName.textContent = productName;
+                        modalProductDetail.innerHTML = detail;
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            modalClose.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // ESC 키로 모달 닫기
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        } else {
+            console.error('Modal elements not found');
+        }
     </script>
 </body>
 </html>
