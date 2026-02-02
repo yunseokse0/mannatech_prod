@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매나테크 제품 소개</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pv-badge {
+            background: linear-gradient(135deg, #84cc16 0%, #06b6d4 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #84cc16 0%, #06b6d4 100%);
+        }
+        
+        .mannatech-gradient {
+            background: linear-gradient(135deg, #84cc16 0%, #06b6d4 100%);
+        }
+        
+        .mannatech-gradient-hover:hover {
+            background: linear-gradient(135deg, #65a30d 0%, #0891b2 100%);
+        }
+        /* PV 계산기(장바구니) 위젯 */
+        #cartWidget { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        #cartWidget:hover { box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+        /* 플로팅 CTA */
+        .floating-cta { z-index: 40; }
+        /* 글리코 키워드 애니메이션 */
+        .glyco-keyword { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .glyco-keyword.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4 md:space-x-8">
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-800">매나테크</h1>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#면역기초건강" class="text-gray-700 hover:text-green-500 transition">면역/기초건강</a>
+                        <a href="#신진대사해독" class="text-gray-700 hover:text-blue-500 transition">신진대사/해독</a>
+                        <a href="#체중조절식단" class="text-gray-700 hover:text-green-500 transition">체중조절/식단</a>
+                        <a href="#뷰티스킨케어" class="text-gray-700 hover:text-blue-500 transition">뷰티/스킨케어</a>
+                        <a href="#pdfSection" class="text-gray-700 hover:text-gray-600 transition">카탈로그</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-2 md:space-x-4">
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-700 hover:text-gray-800 transition">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <button class="mannatech-gradient text-white px-4 md:px-6 py-2 rounded-lg mannatech-gradient-hover transition text-sm md:text-base">
+                        상담하기
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <nav id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="#면역기초건강" class="text-gray-700 hover:text-green-500 transition py-2">면역/기초건강</a>
+                    <a href="#신진대사해독" class="text-gray-700 hover:text-blue-500 transition py-2">신진대사/해독</a>
+                    <a href="#체중조절식단" class="text-gray-700 hover:text-green-500 transition py-2">체중조절/식단</a>
+                    <a href="#뷰티스킨케어" class="text-gray-700 hover:text-blue-500 transition py-2">뷰티/스킨케어</a>
+                    <a href="#pdfSection" class="text-gray-700 hover:text-gray-600 transition py-2">카탈로그</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">트루헬스 클렌즈 패키지</h2>
+                <p class="text-lg md:text-xl mb-6 opacity-90">최고의 건강 솔루션으로 당신의 삶을 변화시키세요</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 mb-6">
+                    <span class="text-3xl md:text-4xl font-bold">990,000원</span>
+                    <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-lg font-semibold">639 PV</span>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-4 md:p-6 mb-8 text-left max-w-3xl mx-auto">
+                    <p class="text-sm md:text-base mb-3 font-semibold">📦 구성 제품:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
+                        <p class="text-xs md:text-sm opacity-90">• 트루플레니쉬(2)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 트루쉐이프(1)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 트루퓨어(3)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 오소린(2)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 오메가-3(1)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 앰브로토스 라이프(1)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 뉴트리베루스(1)</p>
+                        <p class="text-xs md:text-sm opacity-90">• 지아이-프로밸런스(1)</p>
+                    </div>
+                    <p class="text-xs md:text-sm mt-3 pt-3 border-t border-white border-opacity-20 text-yellow-200 font-semibold">
+                        🎁 특별 혜택: 126,000원 상당 제품(파이토폴렌즈 3종, 다이어리, 물병) 무료 증정
+                    </p>
+                </div>
+                <button class="add-to-cart-btn bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition border-2 border-gray-300" 
+                    data-name="트루헬스 클렌즈 패키지" data-price="990000" data-pv="639">
+                    담기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Finder: 목표별 맞춤 큐레이션 -->
+    <section id="quickFinder" class="py-16 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800" data-aos="fade-up">당신의 고민은 무엇인가요?</h2>
+            <p class="text-center text-gray-600 mb-10" data-aos="fade-up" data-aos-delay="100">목적에 맞는 제품을 빠르게 찾아보세요</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <a href="#hero" id="goDetox" class="flex-1 py-4 px-6 rounded-xl mannatech-gradient text-white font-semibold text-center mannatech-gradient-hover transition shadow-lg">
+                    <i class="fas fa-leaf mr-2"></i>다이어트 / 디톡스
+                </a>
+                <a href="#면역기초건강" id="goImmunity" class="flex-1 py-4 px-6 rounded-xl mannatech-gradient text-white font-semibold text-center mannatech-gradient-hover transition shadow-lg">
+                    <i class="fas fa-shield-virus mr-2"></i>만성피로 / 면역
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 글리코 영양소 애니메이션 섹션 -->
+    <section id="glycoSection" class="py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <div class="absolute inset-0 opacity-10">
+                <div class="glyco-cell glyco-cell-1"></div>
+                <div class="glyco-cell glyco-cell-2"></div>
+                <div class="glyco-cell glyco-cell-3"></div>
+            </div>
+            <div class="relative z-10 text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-down">글리코 영양소</h2>
+                <p class="text-lg text-slate-300 mb-12" data-aos="fade-up" data-aos-delay="100">매나테크의 핵심 과학, 세포 건강의 시작</p>
+                <div class="flex flex-wrap justify-center gap-4 mb-8" id="glycoKeywords">
+                    <span class="glyco-keyword px-5 py-3 rounded-full bg-white/10 border border-white/20" data-aos="fade-up" data-aos-delay="200">세포 소통</span>
+                    <span class="glyco-keyword px-5 py-3 rounded-full bg-white/10 border border-white/20" data-aos="fade-up" data-aos-delay="300">면역 강화</span>
+                    <span class="glyco-keyword px-5 py-3 rounded-full bg-white/10 border border-white/20" data-aos="fade-up" data-aos-delay="400">장 건강</span>
+                    <span class="glyco-keyword px-5 py-3 rounded-full bg-white/10 border border-white/20" data-aos="fade-up" data-aos-delay="500">항산화</span>
+                    <span class="glyco-keyword px-5 py-3 rounded-full bg-white/10 border border-white/20" data-aos="fade-up" data-aos-delay="600">앰브로토스</span>
+                </div>
+                <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="700">
+                    글리코영양소는 세포 표면의 당사슬로, 세포 간 신호 전달과 면역 반응에 필수적입니다. 매나테크는 이 영양소를 과학적으로 보강하여 전 세계 수백만 명의 건강을 돕고 있습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+    <style>
+        .glyco-cell { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(132,204,22,0.3) 0%, rgba(6,182,212,0.3) 50%, transparent 70%); }
+        .glyco-cell-1 { top: 10%; left: 5%; animation: float 8s ease-in-out infinite; }
+        .glyco-cell-2 { top: 60%; right: 10%; animation: float 10s ease-in-out infinite 1s; }
+        .glyco-cell-3 { bottom: 20%; left: 20%; animation: float 9s ease-in-out infinite 2s; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(15px, -15px); } }
+    </style>
+
+    <!-- 면역/기초건강 Section -->
+    <section id="면역기초건강" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">면역/기초건강</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 앰브로토스 라이프 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/앰브로토스 라이프.png" alt="앰브로토스 라이프" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">앰브로토스 라이프</h3>
+                        <p class="text-gray-600 mb-4 text-sm">면역력 증진, 피부 및 장 건강 기능성 인정. 100g 파우더</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">223,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">144 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 라이프" data-price="223000" data-pv="144">담기</button>
+                    </div>
+                </div>
+                
+                <!-- OSP (옵티멀 서포트 패킷) -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/OSP.png" alt="OSP" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">OSP</h3>
+                        <p class="text-gray-600 mb-4 text-sm">앰브로토스 AO, 플러스, 카탈리스트 등이 포함된 종합 멀티팩</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">269,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">174 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="OSP" data-price="269000" data-pv="174">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 만나폴 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/만나폴.png" alt="만나폴" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">만나폴</h3>
+                        <p class="text-gray-600 mb-4 text-sm">100% 순수 알로에 베라 겔 농축물 (면역력 핵심)</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">330,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">213 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="만나폴" data-price="330000" data-pv="213">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 카탈리스트 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/카탈리스트.png" alt="카탈리스트" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">카탈리스트</h3>
+                        <p class="text-gray-600 mb-4 text-sm">22가지 필수 비타민과 미네랄 100% 이상 제공. 180정</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">71,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">46 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="카탈리스트" data-price="71000" data-pv="46">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 플러스 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/플러스.png" alt="플러스" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">플러스</h3>
+                        <p class="text-gray-600 mb-4 text-sm">홍삼 성분(진세노사이드) 함유로 면역 및 피로 개선. 60캡슐</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">66,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">43 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="플러스" data-price="66000" data-pv="43">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 앰브로토스 AO -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="350">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/앰브로토스 AO.png" alt="앰브로토스 AO" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">앰브로토스 AO</h3>
+                        <p class="text-gray-600 mb-4 text-sm">강력한 항산화 및 세포 보호. 60캡슐</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">81,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">52 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="앰브로토스 AO" data-price="81000" data-pv="52">담기</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 신진대사/해독 Section -->
+    <section id="신진대사해독" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">신진대사/해독</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 트루퓨어 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/트루퓨어.png" alt="트루퓨어" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">트루퓨어</h3>
+                        <p class="text-gray-600 mb-4 text-sm">간 건강 및 신진대사 지원</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">66,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">43 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="트루퓨어" data-price="66000" data-pv="43">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 지아이-프로밸런스 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/지아이-프로밸런스.png" alt="지아이-프로밸런스" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">지아이-프로밸런스</h3>
+                        <p class="text-gray-600 mb-4 text-sm">85억 보장 유산균, 장 건강 및 배변 활동 지원</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">49,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">32 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="지아이-프로밸런스" data-price="49000" data-pv="32">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 엔자임 프로밸런스 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/엔자임 프로밸런스.png" alt="엔자임 프로밸런스" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">엔자임 프로밸런스</h3>
+                        <p class="text-gray-600 mb-4 text-sm">17가지 곡물 발효 효소로 소화 보조</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">62,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">40 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="엔자임 프로밸런스" data-price="62000" data-pv="40">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 바이탈 프로밸런스 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/바이탈 프로밸런스.png" alt="바이탈 프로밸런스" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">바이탈 프로밸런스</h3>
+                        <p class="text-gray-600 mb-4 text-sm">장벽 강화 및 비오틴 함유</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">77,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">50 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="바이탈 프로밸런스" data-price="77000" data-pv="50">담기</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 체중조절/식단 Section -->
+    <section id="체중조절식단" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">체중조절/식단</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 오소린 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/오소린.png" alt="오소린" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">오소린</h3>
+                        <p class="text-gray-600 mb-4 text-sm">고품질 유청 단백질, 체지방 감소 및 근육 보호. 366g</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">90,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">58 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="오소린" data-price="90000" data-pv="58">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 트루플레니쉬 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/트루플레니쉬.png" alt="트루플레니쉬" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">트루플레니쉬</h3>
+                        <p class="text-gray-600 mb-4 text-sm">한 끼 식사 대용 영양 보충 쉐이크</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">76,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">49 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="트루플레니쉬" data-price="76000" data-pv="49">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 트루쉐이프 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/트루쉐이프.png" alt="트루쉐이프" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">트루쉐이프</h3>
+                        <p class="text-gray-600 mb-4 text-sm">CLA 함유로 체지방 감소에 도움. 90캡슐</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">58,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">37 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="트루쉐이프" data-price="58000" data-pv="37">담기</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 뷰티/스킨케어 Section -->
+    <section id="뷰티스킨케어" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">뷰티/스킨케어</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 루미노베이션 CC 쿠션 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/루미노베이션 CC 쿠션.png" alt="루미노베이션 CC 쿠션" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">루미노베이션 CC 쿠션</h3>
+                        <p class="text-gray-600 mb-4 text-sm">다이아몬드 가루 함유로 광채 메이크업</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">61,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">39 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="루미노베이션 CC 쿠션" data-price="61000" data-pv="39">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 로즈 뷰티 콜라겐 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/로즈 뷰티 콜라겐.png" alt="로즈 뷰티 콜라겐" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">로즈 뷰티 콜라겐</h3>
+                        <p class="text-gray-600 mb-4 text-sm">저분자 콜라겐 2,000mg 함유</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">65,000원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">42 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="로즈 뷰티 콜라겐" data-price="65000" data-pv="42">담기</button>
+                    </div>
+                </div>
+                
+                <!-- 프레시덴 치약 -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="images/프레시덴 치약.png" alt="프레시덴 치약" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden items-center justify-center text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">프레시덴 치약</h3>
+                        <p class="text-gray-600 mb-4 text-sm">9가지 유해 성분 배제 프리미엄 치약</p>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xl md:text-2xl font-bold text-gray-800">9,500원</span>
+                            <span class="pv-badge text-white px-3 py-1 rounded-full text-sm font-semibold">6 PV</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 rounded-lg mannatech-gradient text-white text-sm font-semibold mannatech-gradient-hover transition" data-name="프레시덴 치약" data-price="9500" data-pv="6">담기</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF 뷰어 / 다운로드 섹션 -->
+    <section id="pdfSection" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800" data-aos="fade-up">전제품 카탈로그</h2>
+            <p class="text-center text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">제품 상세표 및 가격표를 웹에서 바로 확인하세요</p>
+            <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl border border-gray-200" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="mannatech.pdf#view=FitH" class="w-full h-[70vh] min-h-[500px]" title="매나테크 전제품 카탈로그"></iframe>
+                <div class="bg-gray-100 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                    <span class="text-gray-700 font-medium">매나테크 제품 안내서 (PDF)</span>
+                    <a href="mannatech.pdf" download class="inline-flex items-center gap-2 mannatech-gradient text-white px-5 py-2 rounded-lg mannatech-gradient-hover transition font-semibold">
+                        <i class="fas fa-download"></i> 전체 다운로드
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">YouTube: 글로벌리더스 그룹</h3>
+                <p class="text-gray-400 mb-6">더 많은 정보와 리뷰를 확인하세요</p>
+                <a href="https://www.youtube.com/results?search_query=글로벌리더스+그룹" 
+                   target="_blank" 
+                   class="inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg transition">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube 검색하기</span>
+                </a>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2026 매나테크. All rights reserved.</p>
+                <a href="./mannatech.pdf" download class="inline-block mt-4 text-cyan-400 hover:text-cyan-300 transition">
+                    <i class="fas fa-download mr-2"></i>전제품 카탈로그 다운로드
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PV 계산기(장바구니) 플로팅 위젯 -->
+    <div id="cartWidget" class="fixed bottom-24 right-4 md:right-6 w-56 md:w-64 bg-white rounded-2xl shadow-xl border border-gray-200 p-4 z-50 hidden">
+        <div class="flex items-center justify-between mb-3">
+            <h4 class="font-bold text-gray-800"><i class="fas fa-calculator text-green-500 mr-2"></i>PV 계산기</h4>
+            <button id="cartClose" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="space-y-2 text-sm">
+            <p class="flex justify-between"><span class="text-gray-600">총 금액</span><strong id="cartTotalPrice" class="text-gray-800 font-bold">0원</strong></p>
+            <p class="flex justify-between"><span class="text-gray-600">총 PV</span><strong id="cartTotalPV" class="mannatech-gradient bg-clip-text text-transparent font-bold">0 PV</strong></p>
+        </div>
+        <p id="cartEmpty" class="text-gray-400 text-xs mt-2">제품을 담아보세요.</p>
+        <ul id="cartList" class="mt-2 max-h-24 overflow-y-auto text-xs text-gray-600 space-y-1 hidden"></ul>
+    </div>
+    <button id="cartToggle" class="fixed bottom-24 right-4 md:right-6 w-14 h-14 rounded-full mannatech-gradient text-white shadow-lg mannatech-gradient-hover transition z-50 flex items-center justify-center" title="PV 계산기">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cartCountBadge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center hidden">0</span>
+    </button>
+
+    <!-- 플로팅 CTA (실시간 상담 연결) -->
+    <div class="floating-cta fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 py-3 px-4">
+        <div class="container mx-auto flex flex-wrap items-center justify-center gap-3 md:gap-6">
+            <a href="#" class="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-500 transition font-semibold text-sm" title="카카오톡 상담">
+                <i class="fas fa-comment"></i> 카카오톡 상담하기
+            </a>
+            <a href="tel:1588-0000" class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold text-sm">
+                <i class="fas fa-phone"></i> 전화 상담
+            </a>
+            <a href="https://www.youtube.com/results?search_query=글로벌리더스+그룹" target="_blank" class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition font-semibold text-sm">
+                <i class="fab fa-youtube"></i> 공식 유튜브
+            </a>
+        </div>
+    </div>
+    <div class="h-14"></div>
+
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+        
+        // Mobile Menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function() { document.getElementById('mobileMenu').classList.add('hidden'); });
+        });
+
+        // PV 계산기(장바구니)
+        var cart = [];
+        function formatPrice(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'; }
+        function updateCartUI() {
+            var totalPrice = cart.reduce(function(s, i) { return s + i.price; }, 0);
+            var totalPV = cart.reduce(function(s, i) { return s + i.pv; }, 0);
+            document.getElementById('cartTotalPrice').textContent = formatPrice(totalPrice);
+            document.getElementById('cartTotalPV').textContent = totalPV + ' PV';
+            var badge = document.getElementById('cartCountBadge');
+            if (cart.length > 0) { badge.classList.remove('hidden'); badge.textContent = cart.length; } else { badge.classList.add('hidden'); }
+            var list = document.getElementById('cartList');
+            var empty = document.getElementById('cartEmpty');
+            if (cart.length > 0) {
+                empty.classList.add('hidden');
+                list.classList.remove('hidden');
+                list.innerHTML = cart.map(function(i) { return '<li>' + i.name + ' · ' + formatPrice(i.price) + ' / ' + i.pv + ' PV</li>'; }).join('');
+            } else {
+                empty.classList.remove('hidden');
+                list.classList.add('hidden');
+            }
+        }
+        document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var name = this.getAttribute('data-name');
+                var price = parseInt(this.getAttribute('data-price'), 10);
+                var pv = parseInt(this.getAttribute('data-pv'), 10);
+                cart.push({ name: name, price: price, pv: pv });
+                updateCartUI();
+                document.getElementById('cartWidget').classList.remove('hidden');
+            });
+        });
+        document.getElementById('cartToggle').addEventListener('click', function() {
+            var w = document.getElementById('cartWidget');
+            w.classList.toggle('hidden');
+        });
+        document.getElementById('cartClose').addEventListener('click', function() {
+            document.getElementById('cartWidget').classList.add('hidden');
+        });
+
+        // Quick Finder: 부드러운 스크롤
+        document.getElementById('goDetox').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('goImmunity').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('면역기초건강').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 글리코 키워드 스크롤 시 서서히 표시
+        (function() {
+            var section = document.getElementById('glycoSection');
+            var keywords = document.querySelectorAll('.glyco-keyword');
+            function check() {
+                if (!section) return;
+                var rect = section.getBoundingClientRect();
+                var inView = rect.top < window.innerHeight * 0.9;
+                keywords.forEach(function(k, i) {
+                    if (inView) setTimeout(function() { k.classList.add('visible'); }, 150 * (i + 1));
+                });
+            }
+            window.addEventListener('scroll', check);
+            check();
+        })();
+    </script>
+</body>
+</html>
