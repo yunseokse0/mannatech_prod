@@ -687,7 +687,15 @@
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800" data-aos="fade-up">전제품 카탈로그</h2>
             <p class="text-center text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">제품 상세표 및 가격표를 웹에서 바로 확인하세요</p>
             <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl border border-gray-200" data-aos="fade-up" data-aos-delay="200">
-                <iframe src="mannatech.pdf#view=FitH" class="w-full h-[70vh] min-h-[500px]" title="매나테크 전제품 카탈로그"></iframe>
+                <div id="pdfPlaceholder" class="w-full h-[70vh] min-h-[300px] bg-gray-100 flex flex-col items-center justify-center p-8">
+                    <i class="fas fa-file-pdf text-6xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-600 font-medium mb-2">매나테크 제품 안내서 (PDF)</p>
+                    <p class="text-gray-500 text-sm mb-6">아래 버튼을 눌러 카탈로그를 미리보기 하거나 다운로드하세요</p>
+                    <button id="pdfPreviewBtn" type="button" class="inline-flex items-center gap-2 mannatech-gradient text-white px-6 py-3 rounded-lg mannatech-gradient-hover transition font-semibold">
+                        <i class="fas fa-eye"></i> PDF 미리보기
+                    </button>
+                </div>
+                <iframe id="pdfIframe" src="" class="w-full h-[70vh] min-h-[500px] hidden" title="매나테크 전제품 카탈로그"></iframe>
                 <div class="bg-gray-100 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
                     <span class="text-gray-700 font-medium">매나테크 제품 안내서 (PDF)</span>
                     <a href="mannatech.pdf" download class="inline-flex items-center gap-2 mannatech-gradient text-white px-5 py-2 rounded-lg mannatech-gradient-hover transition font-semibold">
@@ -843,6 +851,18 @@
             window.addEventListener('scroll', check);
             check();
         })();
+
+        // PDF 미리보기: 버튼 클릭 시에만 iframe에 PDF 로드 (페이지 로드 시 다운로드 방지)
+        var pdfPreviewBtn = document.getElementById('pdfPreviewBtn');
+        var pdfPlaceholder = document.getElementById('pdfPlaceholder');
+        var pdfIframe = document.getElementById('pdfIframe');
+        if (pdfPreviewBtn && pdfPlaceholder && pdfIframe) {
+            pdfPreviewBtn.addEventListener('click', function() {
+                pdfIframe.src = 'mannatech.pdf#view=FitH';
+                pdfPlaceholder.classList.add('hidden');
+                pdfIframe.classList.remove('hidden');
+            });
+        }
 
         // 제품 상세 모달
         var modal = document.getElementById('productModal');
